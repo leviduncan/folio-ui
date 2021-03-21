@@ -1,2 +1,13 @@
 $primaryButton: blue;
 
+body {
+    background: #eee;
+}
+
+.footer-copyright {
+    background: #333;
+    p {
+        color: #fff;
+        text-align: center;
+    }
+}

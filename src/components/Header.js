@@ -1,11 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 
 function Header() {
+    const [click, setClick] = useState(false)
+    const handleClick = () => setClick(!click)
+    const closeMobileMenu = () => setClick(false)
     return (
         <>
-            <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <nav className="navbar">
+            <div className="navbar-contianer">
+                <Link className="navbar-logo">
+                    Simple Folio
+                </Link>
+                <div className="menu-icon" onClick={handleClick}>
+                    <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+                </div>
+                <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                    <li className="nav-item">
+                        <Link to='/' className="nav-links" onClick={closeMobileMenu}>Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/about' className="nav-links" onClick={closeMobileMenu}>About</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/contact' className="nav-links" onClick={closeMobileMenu}>Contact</Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+            {/* <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
                 <div className="container">
-                    <a href="#" className="navbar-brand logo">Brand</a>
+                    <Router>
+                        <Link to="/" className="navbar-brand logo">Brand</Link>
+                    </Router>
+                    
                     <button className="navbar-toggler" data-target="#navcol-1" data-toggle="collapse">
                         <span className="sr-only">Toggle Navigation</span>
                         <span className="navbar-toggler-icon"></span>
@@ -24,7 +52,7 @@ function Header() {
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav> */}
         </>
     )
 }
